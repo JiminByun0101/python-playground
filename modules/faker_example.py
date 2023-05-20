@@ -9,7 +9,7 @@ from faker import Faker
 fake = Faker()
 
 ### 1. Generating Fake Names
-# Generate a randon name
+# Generate a random name
 name = fake.name()
 print(name)
 

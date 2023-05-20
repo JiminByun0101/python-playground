@@ -1,7 +1,6 @@
 import csv
 import random
 from faker import Faker
-
 def generate_csv(num_rows, *subjects):
     """
     Generates a CSV file with random student names, marks for subjects, and calculated grades.
@@ -18,7 +17,7 @@ def generate_csv(num_rows, *subjects):
     fake = Faker()
 
     # Generate a unique file name for the CSV file
-    file_name = f"generated_csv_{num_rows}_rows.csv"
+    file_name = f"db/generated_csv_{num_rows}_rows.csv"
     
     # Write the rows to the CSV file
     with open(file_name, mode="w", newline="") as file:
@@ -29,7 +28,7 @@ def generate_csv(num_rows, *subjects):
         writer.writerow(header)
         
         # Generate random data for each row
-        for _ in range(rows):
+        for _ in range(num_rows):
             # Generate a random student name
             student_name = fake.name()
             
@@ -47,7 +46,7 @@ def generate_csv(num_rows, *subjects):
     
     return file_name
 
-def caculate_grade(average_mark):
+def calculate_grade(average_mark):
     """
     Calculates the grade based on the average mark.
 
@@ -68,8 +67,8 @@ def caculate_grade(average_mark):
     }   
 
     # Calculate the grade based on the average mark
-    for grade, threshhold in grade_thresholds.items():
-        if average_mark >= threshhold:
+    for grade, threshold in grade_thresholds.items():
+        if average_mark >= threshold:
             return grade
     
     return 'F'
